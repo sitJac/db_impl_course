@@ -20,3 +20,14 @@
     ```shell
         ./build/bin/obclient
     ```
+
+## 实验二：实现 Drop Table 功能
+删除表并清除表相关的资源（描述表的文件、数据文件、索引文件），能够成功执行下面语句。
+```SQL
+create table t(id int, age int);
+show tables;
+drop table t;
+show tables;
+drop table t;
+create table t(id int, name char);
+```
