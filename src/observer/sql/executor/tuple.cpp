@@ -255,6 +255,20 @@ void TupleRecordConverter::add_record(const char *record)
         const char *s = record + field_meta->offset();  // 现在当做Cstring来处理
         tuple.add(s, strlen(s));
       } break;
+      case DATES: {
+        // TODO 从record中读取存储的日期
+        int value = *(int *)(record + field_meta->offset());
+        int year = value / 10000;
+        int month = (value % 10000) / 100;
+        int day = value % 100;
+
+        // TODO 将日期转换为满足输出格式的字符串，注意这里月份和天数，不足两位时需要填充0
+        char date[11];
+        sprintf(date, "%04d-%02d-%02d", year, month, day);
+
+        // TODO 将字符串添加到tuple中
+        tuple.add(date, strlen(date));
+      }break;
       default: {
         LOG_PANIC("Unsupported field type. type=%d", field_meta->type());
       }

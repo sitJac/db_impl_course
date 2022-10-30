@@ -31,3 +31,22 @@ show tables;
 drop table t;
 create table t(id int, name char);
 ```
+
+## 实验二：实现 DATE 字段的添加
+增加数据库字段 DATE 类型，时间范围在1970年1月1日和2038年2月之间，能够成功执行以下语句。
+```SQL
+create table t(dmy DATE);
+insert into t values('2022-3-7');
+insert into t values('2022-3-8');
+insert into t values('2022-3-81'); # 合法性检查
+insert into t values('2022-13-1'); # 合法性检查
+select  *  from t; # 日期展示检查
+select  *  from t where dmy='2022-3-7'; # 日期比较检查
+select  *  from t where dmy<'2022-3-7'; # 日期比较检查
+select  *  from t where dmy>'2022-3-7'; # 日期比较检查
+desc t;                                 # 描述表t
+
+create table t2(c1 int, dmy DATE);
+insert into t2 values(1, '2022-3-7');
+select * from t2;
+```
