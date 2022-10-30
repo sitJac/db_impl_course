@@ -127,35 +127,12 @@ RC Table::destroy(const char* dir) {
   if(rc != RC::SUCCESS) return rc;
 
   //TODO 删除描述表元数据的文件
-  std::string meta_file = table_meta_file(dir, name());
-  LOG_ERROR("[TEST] meta_file: %s", meta_file.c_str());
-  std::string meta_file_name = meta_file.substr(meta_file.find_last_of('/') + 1);
-  LOG_ERROR("[TEST] meta_file: %s", meta_file_name.c_str());
-  if (remove(("miniob/db/sys/" + meta_file_name).c_str()) != 0) {
-    LOG_ERROR("Failed to remove table meta file. file name=%s, errmsg=%s", meta_file_name.c_str(), strerror(errno));
-    return RC::IOERR;
-  }
 
   //TODO 删除表数据文件
-  std::string data_file = table_data_file(dir, name());
-  LOG_ERROR("[TEST] data_file: %s", data_file.c_str());
-  std::string data_file_name = data_file.substr(data_file.find_last_of('/') + 1);
-  LOG_ERROR("[TEST] data_file: %s", data_file_name.c_str());
-  if (remove(("miniob/db/sys/" + data_file_name).c_str()) != 0) {
-    LOG_ERROR("Failed to remove table data file. file name=%s, errmsg=%s", data_file_name.c_str(), strerror(errno));
-    return RC::IOERR;
-  }
 
   //TODO 清理所有的索引相关文件数据与索引元数据
-  // for (std::vector<Index *>::iterator it = indexes_.begin(); it != indexes_.end(); ++it) {
-  //   Index *index = *it;
-  //   rc = index->destroy(dir);
-  //   if (rc != RC::SUCCESS) {
-  //     LOG_ERROR("Failed to destroy index. index name=%s, errmsg=%s", index->name(), rc);
-  //     return rc;
-  //   }
-  // }
-  return RC::SUCCESS;
+
+  return RC::GENERIC_ERROR;
 }
 
 
