@@ -19,10 +19,10 @@
 /* First, we deal with  platform-specific or compiler-specific issues. */
 
 /* begin standard C headers. */
-#include <stdio.h>
-#include <string.h>
 #include <errno.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /* end standard C headers. */
 
@@ -193,19 +193,30 @@ struct yy_buffer_state {
 #endif /* !YY_STRUCT_YY_BUFFER_STATE */
 
 void yyrestart(FILE *input_file, yyscan_t yyscanner);
+
 void yy_switch_to_buffer(YY_BUFFER_STATE new_buffer, yyscan_t yyscanner);
+
 YY_BUFFER_STATE yy_create_buffer(FILE *file, int size, yyscan_t yyscanner);
+
 void yy_delete_buffer(YY_BUFFER_STATE b, yyscan_t yyscanner);
+
 void yy_flush_buffer(YY_BUFFER_STATE b, yyscan_t yyscanner);
+
 void yypush_buffer_state(YY_BUFFER_STATE new_buffer, yyscan_t yyscanner);
+
 void yypop_buffer_state(yyscan_t yyscanner);
 
 YY_BUFFER_STATE yy_scan_buffer(char *base, yy_size_t size, yyscan_t yyscanner);
+
 YY_BUFFER_STATE yy_scan_string(yyconst char *yy_str, yyscan_t yyscanner);
-YY_BUFFER_STATE yy_scan_bytes(yyconst char *bytes, yy_size_t len, yyscan_t yyscanner);
+
+YY_BUFFER_STATE yy_scan_bytes(yyconst char *bytes, yy_size_t len,
+                              yyscan_t yyscanner);
 
 void *yyalloc(yy_size_t, yyscan_t yyscanner);
+
 void *yyrealloc(void *, yy_size_t, yyscan_t yyscanner);
+
 void yyfree(void *, yyscan_t yyscanner);
 
 /* Begin user sect3 */
@@ -227,6 +238,7 @@ void yyfree(void *, yyscan_t yyscanner);
  * The user has a chance to override it with an option.
  */
 #include <unistd.h>
+
 #endif
 
 #ifndef YY_EXTRA_TYPE
