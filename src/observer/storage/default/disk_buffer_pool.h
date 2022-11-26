@@ -120,8 +120,15 @@ class BPManager {
      * 1. 如果lru cache中存在这个页，则将它返回
      * 2. 如果lru cache中不存在这个页，则返回nullptr
      */
-    
-    return nullptr;
+    BufferTag tag = {file_desc, page_num};
+    if (lrucache.exists({file_desc, page_num})) {
+      int idx;
+      lrucache.get(tag, &idx);
+      return &(frame[idx]);
+    } else {
+      // 2. 如果lru cache中不存在这个页，则返回nullptr
+      return nullptr;
+    }
   }
 
   Frame *getFrame() {
@@ -129,8 +136,7 @@ class BPManager {
      * @todo
      * 返回frame数组
      */
-
-    return nullptr;
+    return frame;
   }
 
   bool *getAllocated() {
@@ -138,8 +144,7 @@ class BPManager {
      * @todo
      * 返回allocated数组
      */
-
-    return nullptr;
+    return allocated;
   }
   
   void printLruCache();
